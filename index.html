@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Birthday of Babin</title>
+        <style media="screen" type="text/css">
+            * { font-family: inconsolata, consolas, mono; }
+            body { background-color: #eee; }
+            h1 { background-color: #d82589; color: white; padding: 1em; }
+            h2 { font-size: 20pt; font-weight: 700; }
+            p { font-size: 20pt }
+        </style>
+    </head>
+    <body>
+        <h1>Birthday of Babin is birthday for all!</h1>
+        <h2>Is it birthday of Babin?</h2>
+        <p id="is-it"></p>
+        <script type="text/javascript">
+            var birthdayCake = getEmoji('1f382');
+            var present = getEmoji('1f381');
+            var party = getEmoji('1f389');
+            var disappoint = getEmoji('1f61e');
+            var relieved = getEmoji('1f60b');
+            function getEmoji(codePoint) {
+                if (typeof String.fromCodePoint === 'function') {
+                    return String.fromCodePoint(parseInt(codePoint, 16));
+                } else {
+                    return '';
+                }
+            }
+            function update() {
+                var now = new Date();
+                var june = now.getMonth() === 5;
+                var may = now.getMonth() === 4
+                var isIt = june && now.getDate() === 4;
+                var soon = (june && now.getDate() < 4) || (may && now.getDate() > 21);
+                var whoops = june && now.getDate() > 4;
+                var text;
+                if (isIt) {
+                    text = "It is! Happy birthday of Babin!!!!! " + party + birthdayCake + present + party;
+                } else if (soon) {
+                    text = "Not yet! Birthday of Babin is on June 4 " + relieved;
+                } else if (whoops) {
+                    text = "Aaaugghhhh!!! You missed it! Birthday of Babin was on June 4 " + disappoint;
+                } else {
+                    text = "Nope, birthday of Babin is in June";
+                }
+                document.getElementById('is-it').innerText = text;
+            }
+
+            update();
+            setInterval(update, 500);
+        </script>
+    </body>
+</html>
