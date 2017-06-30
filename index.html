@@ -22,6 +22,7 @@
             var party = getEmoji('1f389');
             var disappoint = getEmoji('1f61e');
             var relieved = getEmoji('1f60b');
+            var eggplant = getEmoji('1f346');
             function getEmoji(codePoint) {
                 if (typeof String.fromCodePoint === 'function') {
                     return String.fromCodePoint(parseInt(codePoint, 16));
@@ -34,11 +35,14 @@
                 var june = now.getMonth() === 5;
                 var may = now.getMonth() === 4
                 var isIt = june && now.getDate() === 4;
+                var unexpectedMisty = june && now.getDate() === 30;
                 var soon = (june && now.getDate() < 4) || (may && now.getDate() > 21);
                 var whoops = june && now.getDate() > 4;
                 var text;
                 if (isIt) {
                     text = "It is! Happy birthday of Babin!!!!! " + party + birthdayCake + present + party;
+                } else if (unexpectedMisty) {
+                    text = "What is this!? Unexpectedly, it's birthday of Babin <strong>Misty</strong>!!! " + party + birthdayCake + present + eggplant;
                 } else if (soon) {
                     text = "Not yet! Birthday of Babin is on June 4 " + relieved;
                 } else if (whoops) {
